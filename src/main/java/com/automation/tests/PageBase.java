@@ -1,12 +1,16 @@
 package com.automation.tests;
 
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.logging.LogType.DRIVER;
 
 public class PageBase {
 
@@ -20,7 +24,7 @@ public class PageBase {
     }
 
     protected void waitElement(By locator){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -79,7 +83,7 @@ public class PageBase {
         String url = driver.getCurrentUrl();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
     }
 
@@ -88,7 +92,7 @@ public class PageBase {
     }
     public void moveToView(By locator){
         WebElement element = action(locator);
-        WebElement myElement = new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(element));
+        WebElement myElement = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(element));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", myElement);
     }
 
@@ -108,4 +112,5 @@ public class PageBase {
     protected void Refresh(){
         driver.navigate().refresh();
     }
+
 }

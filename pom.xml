@@ -13,8 +13,10 @@
   <url>http://www.example.com</url>
 
   <properties>
-    <selenium.version>3.141.59</selenium.version>
+    <selenium.version>4.16.1</selenium.version>
+    <appium.version>8.6.0</appium.version>
     <webdrivermanager.version>3.6.2</webdrivermanager.version>
+    <selenium-remote-drive.version>4.13.0</selenium-remote-drive.version>
     <testng.version>7.4.0</testng.version>
     <rest-assured.version>4.3.3</rest-assured.version>
     <allure-testng.version>2.13.8</allure-testng.version>
@@ -38,9 +40,19 @@
       <version>${selenium.version}</version>
     </dependency>
     <dependency>
+      <groupId>io.appium</groupId>
+      <artifactId>java-client</artifactId>
+      <version>${appium.version}</version>
+    </dependency>
+    <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>${webdrivermanager.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-remote-driver</artifactId>
+      <version>${selenium-remote-drive.version}</version>
     </dependency>
     <dependency>
       <groupId>org.testng</groupId>
