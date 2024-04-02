@@ -15,12 +15,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
+import static io.restassured.http.Cookie.PATH;
 import static org.openqa.selenium.logging.LogType.DRIVER;
 
 public class TestBase {
@@ -28,6 +30,8 @@ public class TestBase {
     LoginPage loginPage;
     HomePage homePage;
     AttendancePage attendancePage;
+    LetterPage letterPage;
+    BankLetterPage bankLetterPage;
     private final String url="http://automationpractice.com/index.php";
 
     @BeforeSuite
@@ -59,18 +63,20 @@ public class TestBase {
         capabilities.setCapability("autoAcceptAlerts", "true");
         capabilities.setCapability("autoAcceptAlerts", false);
         //capabilities.setCapability(AndroidMobileCapabilityType.AUTO_WEBVIEW_TIMEOUT,true);
-        //capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
+        //capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2 ");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
         //driver = new AndroidDriver(new URL(properties.getProperty("appiumServer")), capabilities);
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         attendancePage = new AttendancePage(driver);
+        letterPage = new LetterPage(driver);
+        bankLetterPage = new BankLetterPage(driver);
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() throws IOException {
         ((AndroidDriver) driver).closeApp();
     }
-
+    
 
 }

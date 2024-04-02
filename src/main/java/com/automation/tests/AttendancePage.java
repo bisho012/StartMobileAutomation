@@ -14,6 +14,10 @@ public class AttendancePage extends PageBase{
     public By btnDone = By.xpath("//android.widget.Button[@content-desc=\" Thursday 18 January 2024 You have entries for this day \"]/android.widget.TextView");
     public By lblSickLeave = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[9]/android.widget.TextView[1]");
     public By lblDone = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[9]/android.widget.TextView[1]");
+    public By btnMissed = By.xpath("//android.widget.Button[@content-desc=\" Tuesday 9 January 2024 \"]/android.widget.TextView");
+    public By lblMissed = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[9]/android.view.ViewGroup/android.widget.TextView[1]");
+    public By btnLeave = By.xpath("//android.widget.Button[@content-desc=\" Tuesday 5 December 2023 You have entries for this day \"]/android.widget.TextView");
+    public By lblLeave = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[9]/android.widget.TextView[1]");
     public String getAttendanceLabel(){
         waitElement(lblAttendance);
         return getContent(lblAttendance);
@@ -36,5 +40,22 @@ public class AttendancePage extends PageBase{
     public String getDoneLabel(){
         waitElement(lblDone);
         return getContent(lblDone);
+    }
+
+    public void clickMissedDay(){
+        click(btnMissed);
+    }
+
+    public String getMissedLabel(){
+        waitElement(lblMissed);
+        return getContent(lblMissed);
+    }
+    public void clickLeaveDay(){
+        click(btnLeave);
+    }
+
+    public String getLeaveLabel(){
+        waitElement(lblLeave);
+        return getContent(lblLeave);
     }
 }

@@ -3,9 +3,8 @@ package com.automation.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 
-public class AttendanceTest extends TestBase{
+public class AttendanceTest extends TestBase {
     @Test(priority=1)
     public void SickLeave() {
         loginPage.setUsername("3458");
@@ -31,5 +30,34 @@ public class AttendanceTest extends TestBase{
         attendancePage.clickLastMonth();
         attendancePage.clickDoneDay();
         Assert.assertEquals("Done",attendancePage.getDoneLabel());
+    }
+
+    @Test(priority=3)
+    public void Missed() {
+        loginPage.setUsername("3458");
+        loginPage.setPassword("actst2023");
+        loginPage.clickLogin();
+        Assert.assertEquals("Binoy .A", homePage.getEmployeeName());
+        homePage.clickAttendance();
+        Assert.assertEquals("Attendance",attendancePage.getAttendanceLabel());
+        attendancePage.clickLastMonth();
+        attendancePage.clickLastMonth();
+        attendancePage.clickMissedDay();
+        Assert.assertEquals("Missed",attendancePage.getMissedLabel());
+    }
+
+    @Test(priority=4)
+    public void Leave() {
+        loginPage.setUsername("3458");
+        loginPage.setPassword("actst2023");
+        loginPage.clickLogin();
+        Assert.assertEquals("Binoy .A", homePage.getEmployeeName());
+        homePage.clickAttendance();
+        Assert.assertEquals("Attendance",attendancePage.getAttendanceLabel());
+        attendancePage.clickLastMonth();
+        attendancePage.clickLastMonth();
+        attendancePage.clickLastMonth();
+        attendancePage.clickLeaveDay();
+        Assert.assertEquals("Leave",attendancePage.getLeaveLabel());
     }
 }
